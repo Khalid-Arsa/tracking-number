@@ -46,9 +46,15 @@
         </form>
     </div>
     <div class="content">
-        {% for datas in data %}
-            <p>{{ datas.time[0] }} : {{ datas.status[0] }}</p>
+        {% for stat in data.status %}
+            {% for t in data.time %}
+                {% if forloop.counter == forloop.parentloop.counter %}
+                    <p>{{ t }} -> {{ stat }} </p>
+                {% endif %}
+            {% endfor %}
         {% endfor %}
+
+
     </div>
 
 </body>

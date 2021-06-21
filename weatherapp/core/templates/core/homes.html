@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tracking App</title>
+
+    <style>
+        *{
+            margin: 0;
+            font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+            box-sizing: border-box;
+        }
+        #main{
+            text-align: center;
+            padding: 50px;
+        }
+        input[type='text']{
+            width: 30%;
+            padding: 10px;
+            border: 2px solid black;
+            margin-bottom: 5px;
+            margin-top: 20px;
+        }
+        input[type='submit']{
+            width: 30%;
+            padding: 10px;
+            border: 2px solid black;
+            background: black;
+            color: white;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main">
+        <h1>Tracking Number</h1>
+        <form method="GET">
+            <label for="number"></label>
+            <input type="text" name="number" value="{{ request.GET.number }}" placeholder="number..."><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div class="content">
+        {% for datas in data %}
+            <p>{{ datas.time[0] }} : {{ datas.status[0] }}</p>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
